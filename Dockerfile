@@ -68,8 +68,8 @@ COPY img/background.svg /usr/share/grafana/public/img/g8_login_light.svg
 ##################################################################
 
 # Update Title
-RUN sed -i 's|<title>\[\[.AppTitle\]\]</title>|<title>Business App</title>|g' /usr/share/grafana/public/views/index.html
-RUN sed -i 's|Loading Grafana|Loading Business App|g' /usr/share/grafana/public/views/index.html
+RUN sed -i 's|<title>\[\[.AppTitle\]\]</title>|<title>MIOBOX App</title>|g' /usr/share/grafana/public/views/index.html
+RUN sed -i 's|Loading Grafana|Loading MIOBOX App|g' /usr/share/grafana/public/views/index.html
 
 ## Update Mega and Help menu
 RUN sed -i "s|\[\[.NavTree\]\],|nav,|g; \
@@ -95,19 +95,19 @@ RUN sed -i 's|\[navigation.app_sections\]|\[navigation.app_sections\]\nbusiness-
 ##################################################################
 
 RUN find /usr/share/grafana/public/build/ -name *.js \
-## Update Title
-    -exec sed -i 's|AppTitle="Grafana"|AppTitle="Business App"|g' {} \; \
-## Update Login Title
-    -exec sed -i 's|LoginTitle="Welcome to Grafana"|LoginTitle="Business App for Grafana"|g' {} \; \
-## Remove Documentation, Support, Community in the Footer
+    ## Update Title
+    -exec sed -i 's|AppTitle="Grafana"|AppTitle="MIOBOXApp"|g' {} \; \
+    ## Update Login Title
+    -exec sed -i 's|LoginTitle="Welcome to Grafana"|LoginTitle="MIOBOX Dashboard"|g' {} \; \
+    ## Remove Documentation, Support, Community in the Footer
     -exec sed -i 's|\[{target:"_blank",id:"documentation".*grafana_footer"}\]|\[\]|g' {} \; \
-## Remove Edition in the Footer
+    ## Remove Edition in the Footer
     -exec sed -i 's|({target:"_blank",id:"license",.*licenseUrl})|()|g' {} \; \
-## Remove Version in the Footer
+    ## Remove Version in the Footer
     -exec sed -i 's|({target:"_blank",id:"version",.*CHANGELOG.md":void 0})|()|g' {} \; \
-## Remove News icon
+    ## Remove News icon
     -exec sed -i 's|(.,.....)(....,{className:.,onClick:.,iconOnly:!0,icon:"rss","aria-label":"News"})|null|g' {} \; \
-## Remove Open Source icon
+    ## Remove Open Source icon
     -exec sed -i 's|.push({target:"_blank",id:"version",text:`${..edition}${.}`,url:..licenseUrl,icon:"external-link-alt"})||g' {} \;
 
 ##################################################################

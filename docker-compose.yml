@@ -3,7 +3,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    image: ghcr.io/volkovlabs/app:latest
+    image: mioboxgraf:latest
     entrypoint: /run.sh
     ports:
       - 3000:3000/tcp

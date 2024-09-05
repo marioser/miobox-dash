@@ -1,0 +1,27 @@
+captainVersion: 4
+services:
+  $$cap_appname:
+    image: miometrix/miograf:$$cap_version
+    restart: always
+    environment:
+      GF_DEFAULT_APP_MODE: development
+    volumes:
+      - $$cap_appname-config:/etc/grafana
+      - $$cap_appname-data:/var/lib/grafana
+      - $$cap_appname-provisioning:/etc/grafana/provisioning
+      - $$cap_appname-dist:/var/lib/grafana/plugins/business-app
+    caproverExtra:
+      containerHttpPort: '3000'
+caproverOneClickApp:
+  variables:
+    - label: MIOBOX Dashboard
+      defaultValue: 'latest'
+      description: 'Find versions on DockerHub https://hub.docker.com/r/grafana/grafana/tags'
+      id: '$$cap_version'
+  instructions:
+    end: 'Grafana is now starting. You can log in with the default login/password of admin/admin.'
+    start: 'Read more about Grafana: https://grafana.com/'
+  displayName: MIOBOX Dashboard
+  isOfficial: true
+  description: 'Grafana allows you to query, visualize, alert on and understand your metrics no matter where they are stored.'
+  documentation: 'https://hub.docker.com/r/grafana/grafana'
