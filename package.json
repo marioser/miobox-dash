@@ -5,6 +5,7 @@
     "@grafana/data": "^11.2.0",
     "@grafana/runtime": "^11.2.0",
     "@grafana/ui": "^11.2.0",
+    "business-suite": "file:",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^5.3.4",

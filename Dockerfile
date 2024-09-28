@@ -1,4 +1,4 @@
-FROM grafana/grafana-oss:11.2.0
+FROM grafana/grafana-oss:11.2.1
 
 ##################################################################
 ## CONFIGURATION
@@ -14,6 +14,7 @@ ENV GF_AUTH_BASIC_ENABLED=false
 
 ## Disable Sanitize
 ENV GF_PANELS_DISABLE_SANITIZE_HTML=true
+ENV GF_SECURITY_ALLOW_EMBEDDING=true
 
 ## Check for Updates
 ENV GF_ANALYTICS_CHECK_FOR_UPDATES=false
@@ -33,7 +34,7 @@ ENV GF_PATHS_PLUGINS="/var/lib/grafana/plugins"
 ## Required for the App plugin
 ##################################################################
 
-COPY --chown=grafana:root dist /app
+#COPY --chown=grafana:root dist /app
 COPY entrypoint.sh /
 
 ## Copy Provisioning

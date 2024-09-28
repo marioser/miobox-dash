@@ -1,15 +1,17 @@
-services:
-  grafana:
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    image: mioboxgraf:latest
-    entrypoint: /run.sh
-    ports:
-      - 3000:3000/tcp
-    environment:
-      - GF_DEFAULT_APP_MODE=development
-      - GF_SECURITY_ALLOW_EMBEDDING=true
-    volumes:
-      - ./dist:/var/lib/grafana/plugins/business-app
-      - ./provisioning:/etc/grafana/provisioning
+version: '3.8'  # Specify the Compose file version  
+
+services:  
+  grafana:  
+    image: miometrix/miobox  
+    ports:  
+      - "3001:3000"  
+    environment:  
+      - GF_DEFAULT_APP_MODE=development  
+      - GF_SECURITY_ALLOW_EMBEDDING=true  
+    volumes:  
+      - dist:/var/lib/grafana/plugins/business-app  
+      - provisioning:/etc/grafana/provisioning  
+
+volumes:  
+  dist:        # Define the 'dist' volume  
+  provisioning: # Define the 'provisioning' volume  
