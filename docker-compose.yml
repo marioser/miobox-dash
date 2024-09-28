@@ -9,6 +9,7 @@ services:
       - 3000:3000/tcp
     environment:
       - GF_DEFAULT_APP_MODE=development
+      - GF_SECURITY_ALLOW_EMBEDDING=true
     volumes:
       - ./dist:/var/lib/grafana/plugins/business-app
       - ./provisioning:/etc/grafana/provisioning
