@@ -2,12 +2,11 @@ version: '3.8'  # Specify the Compose file version
 
 services:  
   grafana:  
-    image: miometrix/miobox  
+    image: miometrix/miobox-dash
     ports:  
-      - "3001:3000"  
+      - "3000:3000"  
     environment:  
-      - GF_DEFAULT_APP_MODE=development  
-      - GF_SECURITY_ALLOW_EMBEDDING=true  
+      - GF_DEFAULT_APP_MODE=production  
     volumes:  
       - dist:/var/lib/grafana/plugins/business-app  
       - provisioning:/etc/grafana/provisioning  
